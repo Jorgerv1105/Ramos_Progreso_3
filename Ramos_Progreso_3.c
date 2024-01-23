@@ -80,10 +80,10 @@ void ingresarInformacion(struct InformacionAlumnos alumnos[], int *CantAlumnos) 
 void mostrarInformacion(struct InformacionAlumnos alumnos[], int CantAlumnos) {
     if (CantAlumnos > 0) {
         // Imprimir títulos
-        printf("\n%-20s %-20s %-20s %-20s %-20s\n", "Nombre", "Matricula", "Direccion", "Materia, Nota");
+        printf("\n%-20s %-20s %-20s %-20s %-20s\n", "Nombre", "Matricula", "Direccion", "Materia", "Nota");
 
         for (int i = 0; i < CantAlumnos; i++) {
-            // Imprimir datos del alumno en formato tabular
+            // Imprimir datos del alumno en formato horizontal
             printf("%-20s %-20d %-20s %-20s %-20f\n",alumnos[i].nombre, alumnos[i].matricula,alumnos[i].direccion, alumnos[i].materia,alumnos[i].nota);
         }
     } else {
@@ -97,14 +97,11 @@ void mostrarInformacion(struct InformacionAlumnos alumnos[], int CantAlumnos) {
 
     if (archivo != NULL) {
         // Imprimir títulos en el archivo
-        fprintf(archivo, "%s ; %s;%s;%s;%f\n", "Nombre", "Matricula", "Direccion", "Carrera", "Nota");
+        fprintf(archivo, "%-20s ; %-20s;%-20s;%-20s;%-20s\n", "Nombre", "Matricula", "Direccion", "Carrera", "Nota");
 
         for (int i = 0; i < CantAlumnos; i++) {
-            // Imprimir datos del alumno en formato tabular
-            fprintf(archivo, "%s;%d;%s;%s;%.2f\n",
-                    alumnos[i].nombre, alumnos[i].matricula,
-                    alumnos[i].direccion, alumnos[i].materia,
-                    alumnos[i].nota);
+            // Imprimir datos del alumno en formato horizontal
+            fprintf(archivo, "%s;%d;%s;%s;%.2f\n",alumnos[i].nombre, alumnos[i].matricula,alumnos[i].direccion, alumnos[i].materia,alumnos[i].nota);
         }
 
         fclose(archivo);
